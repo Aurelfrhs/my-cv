@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from "flowbite-react";
 import { ReactTyped } from 'react-typed';
 import { BsFacebook, BsGithub, BsLinkedin, BsTwitter, BsInstagram } from "react-icons/bs";
-import Image from '../assets/image.png';
+import Image from '../assets/Image.png';
 
 export const Profile = () => {
   return (
