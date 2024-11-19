@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from "flowbite-react";
 import { ReactTyped } from 'react-typed';
 import { BsFacebook, BsGithub, BsLinkedin, BsTwitter, BsInstagram } from "react-icons/bs";
-import Image from "../assets/image.png";
+import Image from '../assets/image.png';
 
 export const Profile = () => {
   return (
@@ -24,13 +24,15 @@ export const Profile = () => {
           </h1>
           <span className="text-lg text-gray-500 dark:text-gray-400">Software Engineer</span>
         </div>
+        <div>
         <img
-          alt="Photo Profile"
+          alt="Photo"
           height="550"
           width="550" 
           src={Image}
           className="border-2 border-gray-300 shadow-lg"
-        />
+          />
+          </div>
       </div>
 
       <div className="flex mt-4">
