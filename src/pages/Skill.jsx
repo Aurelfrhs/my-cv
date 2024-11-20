@@ -112,6 +112,12 @@ export const Skill = () => {
           management and dynamic web application development, I am equipped to
           tackle a wide range of challenges.
         </motion.p>
+        
+        {/* Adding space below the paragraph */}
+        <div className="flex justify-center mt-6 mb-8">
+          <div className="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
+        </div>
+
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
           initial="hidden"
@@ -119,9 +125,9 @@ export const Skill = () => {
           exit="exit"
         >
           {sections.map((section, index) => (
-            < motion.div
+            <motion.div
               key={index}
-              className="bg-white border border-gray-300 p-6 rounded-lg shadow-lg text-gray-800 transition-transform transform hover:scale-105 hover:shadow-2xl hover:bg-blue-50"
+              className="bg-white border border-gray-300 p-6 rounded-lg shadow-lg text-gray-800 transition -transform transform hover:scale-105 hover:shadow-2xl hover:bg-blue-50"
               variants={gridItemVariants}
               custom={index * 0.1}
               transition={{ duration: 0.5, ease: "easeInOut" }}
