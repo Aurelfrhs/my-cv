@@ -150,5 +150,3 @@ export const Footer = () => {
     </motion.div>
   );
 };
-
-export default Footer;

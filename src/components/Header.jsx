@@ -55,5 +55,3 @@ export const Header = () => {
     </motion.div>
   );
 };
-
-export default Header;

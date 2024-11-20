@@ -141,5 +141,3 @@ export const Skill = () => {
     </div>
   );
 };
-
-export default Skill;
