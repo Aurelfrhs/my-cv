@@ -7,16 +7,15 @@ import {
   BsInstagram,
 } from "react-icons/bs";
 
-export const CustomFooter = () => {
+export const Footer = () => {
   return (
     <FlowbiteFooter container className="bg-gray-900 text-white">
       <div className="w-full py-10">
-        <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
+        <div className="grid w-full justify-between gap-8 sm:flex sm:justify-between md:grid-cols-1">
           <div className="flex items-center mb-4 sm:mb-0">
-            <span className="text-2xl font-bold text-blue-500">Flowbite</span>{" "}
-            {/* Ganti warna di sini */}
+            <span className="text-2xl font-bold text-blue-500">Flowbite</span>
           </div>
-          <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
             <div>
               <FlowbiteFooter.Title title="About" />
               <FlowbiteFooter.LinkGroup col>
@@ -25,15 +24,13 @@ export const CustomFooter = () => {
                   className="hover:underline hover:text-green-400"
                 >
                   Flowbite
-                </FlowbiteFooter.Link>{" "}
-                {/* Ganti warna di sini */}
+                </FlowbiteFooter.Link>
                 <FlowbiteFooter.Link
                   href="#"
                   className="hover:underline hover:text-green-400"
                 >
                   Tailwind CSS
-                </FlowbiteFooter.Link>{" "}
-                {/* Ganti warna di sini */}
+                </FlowbiteFooter.Link>
               </FlowbiteFooter.LinkGroup>
             </div>
             <div>
@@ -44,15 +41,13 @@ export const CustomFooter = () => {
                   className="hover:underline hover:text-green-400"
                 >
                   GitHub
-                </FlowbiteFooter.Link>{" "}
-                {/* Ganti warna di sini */}
+                </FlowbiteFooter.Link>
                 <FlowbiteFooter.Link
                   href="#"
                   className="hover:underline hover:text-green-400"
                 >
                   Discord
-                </FlowbiteFooter.Link>{" "}
-                {/* Ganti warna di sini */}
+                </FlowbiteFooter.Link>
               </FlowbiteFooter.LinkGroup>
             </div>
             <div>
@@ -63,15 +58,13 @@ export const CustomFooter = () => {
                   className="hover:underline hover:text-green-400"
                 >
                   Privacy Policy
-                </FlowbiteFooter.Link>{" "}
-                {/* Ganti warna di sini */}
+                </FlowbiteFooter.Link>
                 <FlowbiteFooter.Link
                   href="#"
                   className="hover:underline hover:text-green-400"
                 >
                   Terms & Conditions
-                </FlowbiteFooter.Link>{" "}
-                {/* Ganti warna di sini */}
+                </FlowbiteFooter.Link>
               </FlowbiteFooter.LinkGroup>
             </div>
           </div>
@@ -127,4 +120,4 @@ export const CustomFooter = () => {
   );
 };
 
-export default CustomFooter;
+export default Footer;

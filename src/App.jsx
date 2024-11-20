@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Header } from './components/Header';
-import { Profile } from './components/Profile';
-import { CustomFooter } from './components/CustomFooter';
-import { About } from './components/About';
+import { Profile } from './pages/Profile';
+import { Footer } from './components/Footer';
+import { About } from './pages/About';
 // import { Skill } from './components/Skill';
 import { styled } from 'styled-components';
 
@@ -19,11 +19,11 @@ const App = () => {
       <Spacer />
       <Profile />
       <Spacer />
-      <About />
-      <Spacer />
+      {/* <About />
+      <Spacer /> */}
       {/* <Skill /> */}
       <Spacer />
-      <CustomFooter />
+      <Footer />
     </>
   );
 }
