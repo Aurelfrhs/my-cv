@@ -31,7 +31,7 @@ export const Header = () => {
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
-          {["Home", "About", "Skills", "Award", "My Contact"].map((link, index) => (
+          {["Home", "Skills", "Award", "My Contact"].map((link, index) => (
             <motion.div
               key={index}
               variants={linkVariants}
