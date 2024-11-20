@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "flowbite-react";
 import '../index.css';
-import Image from '../assets/Image.png';
+import Image from '../assets/image.png';
 
 export const About = () => {
   const [isVisible, setIsVisible] = useState(false);
