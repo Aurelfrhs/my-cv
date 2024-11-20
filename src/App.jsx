@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { Header } from './components/Header';
 import { Profile } from './pages/Profile';
 import { Footer } from './components/Footer';
-import { About } from './pages/About';
-// import { Skill } from './components/Skill';
+import { Skill } from './pages/Skill';
 import { styled } from 'styled-components';
 
 const Spacer = styled.div`
@@ -19,9 +18,7 @@ const App = () => {
       <Spacer />
       <Profile />
       <Spacer />
-      {/* <About />
-      <Spacer /> */}
-      {/* <Skill /> */}
+      <Skill />
       <Spacer />
       <Footer />
     </>
