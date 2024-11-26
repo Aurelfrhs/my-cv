@@ -9,7 +9,7 @@ import { Footer } from './components/Footer';
 import { styled } from 'styled-components';
 
 const Spacer = styled.div`
-  margin: 20px 0; /* Atur jarak vertikal */
+  margin: 100px 0; /* Atur jarak vertikal */
 `;
 
 const App = () => {
@@ -23,13 +23,11 @@ const App = () => {
       <Spacer />
       <About />
       <Spacer />
-      <Spacer />
       <Skill />
       <Spacer />
       <Project />
       <Spacer />
-      <Contact />
-      <Spacer />
+      <Contact /> 
       <Footer />
     </>
   );

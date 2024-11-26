@@ -1,7 +1,6 @@
-// Start of Skill Component Code
 import React, { useEffect } from "react";
 import AOS from "aos";
-import "aos/dist/aos.css"; 
+import "aos/dist/aos.css";
 import {
   FaHtml5,
   FaCss3Alt,
@@ -22,117 +21,133 @@ const sections = [
     title: "HTML",
     icon: <FaHtml5 />,
     description: "Hypertext Markup Language",
+    color: "#E44D26",
   },
-  { title: "CSS", icon: <FaCss3Alt />, description: "Cascading Style Sheets" },
+  {
+    title: "CSS",
+    icon: <FaCss3Alt />,
+    description: "Cascading Style Sheets",
+    color: "#1572B6",
+  },
   {
     title: "JavaScript",
     icon: <FaJsSquare />,
     description: "A high-level, dynamic, and interpreted programming language",
+    color: "#F7DF1E",
   },
   {
     title: "Bootstrap",
     icon: <FaBootstrap />,
     description: "A popular front-end framework for building responsive and mobile-first projects",
+    color: "#563D7C",
   },
   {
     title: "React",
     icon: <FaReact />,
-    description: "A utility-first CSS framework for building custom user interfaces",
+    description: "A JavaScript library for building user interfaces",
+    color: "#61DAFB",
   },
   {
     title: "PHP",
     icon: <FaPhp />,
     description: "A server-side scripting language for web development",
+    color: "#4F5B93",
   },
   {
     title: "MySQL",
     icon: <FaDatabase />,
     description: "A relational database management system",
+    color: "#00758F",
   },
   {
     title: "Laravel",
     icon: <FaLaravel />,
     description: "A PHP framework for building robust and scalable web applications",
+    color: "#FF2D20",
   },
   {
     title: "Git",
     icon: <FaGit />,
     description: "A version control system for tracking changes in source code",
+    color: "#F05032",
   },
   {
     title: "GitHub",
     icon: <FaGithub />,
     description: "A web-based platform for version control and collaboration",
+    color: "#181717",
   },
   {
     title: "UML",
     icon: <FaProjectDiagram />,
     description: "A standardized modeling language for software systems",
+    color: "#A2A2A2",
   },
   {
     title: "Python",
     icon: <FaPython />,
     description: "A high-level programming language for general-purpose programming",
+    color: "#3776AB",
   },
 ];
 
 export const Skill = () => {
   useEffect(() => {
-    AOS.init();
+    AOS.init({ once: false });
   }, []);
 
   return (
-    <div className="bg-gray-100 min-h-screen py-10" id="skill">
-      <div className="container mx-auto p-5">
-        <div
-          className="text-black items-center text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 text-center"
+    <div className="bg-gray-100 min-h-screen p-20" id="skill">
+      <div className="max-w-screen-xl mx-auto px-4">
+        <h1
+          className="text-4xl font-bold text-center text-gray-800 mb-4"
           data-aos="fade-down"
-          data-aos-easing="linear"
           data-aos-duration="1000"
         >
           Skills
-        </div>
-        <div
+        </h1>
+        <h2
+          className="text-center text-gray-600 mb-20 text-lg"
           data-aos="fade-down"
-          data-aos-easing="linear"
-          data-aos-offset="700"
-          className="text-black text-lg leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto mb-8 text-center"
+          data-aos-duration="1200"
         >
           I possess a diverse skill set in various technologies that empower
           effective and efficient web development. From design to database
           management and dynamic web application development, I am equipped to
           tackle a wide range of challenges.
-        </div>
-
-        <div className="flex justify-center mt-6 mb-8"
-          data-aos="fade-down"
-          data-aos-easing="linear"
-          data-aos-duration="1200"
-        >
-          <div className="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
-        </div>
+        </h2>
 
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-          initial="hidden"
-          animate="visible"
-          exit="exit"
+          className="flex justify-center mb-5"
+          data-aos="fade-down"
+          data-aos-duration="1200"
         >
+          <div className="w-24 h-1 bg-indigo-600 rounded" />
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {sections.map((section, index) => (
             <div
               key={index}
-              className="bg-white border border-gray-300 p-6 rounded-lg shadow-lg text-gray-800 transition -transform transform hover:scale-105 hover:shadow-2xl hover:bg-blue-50"
-              data-aos="fade-left"
-              data-aos-easing="ease-in-sine"
-              data-aos-offset="300"
+              data-aos="fade-up"
+              data-aos-easing="linear"
+              data-aos-duration ="1000"
+              className="bg-gray-800 text-white rounded-lg p-6 shadow-lg flex flex-col items-center text-center transition-transform transform hover:scale-105 relative"
             >
-              <div className="flex items-center mb-4">
-                <div className="text-4xl mr-4 text-blue-600">
+              <div className="flex items-center justify-center mb-4">
+                <div
+                  className="text-4xl mr-2"
+                  style={{ color: section.color }}
+                  aria-label={section.title}
+                >
                   {section.icon}
                 </div>
-                <h2 className="text-xl sm :text-2xl font-semibold">{section.title}</h2>
+                <h3 className="text-xl">{section.title}</h3>
               </div>
-              <p className="text-sm text-gray-600">{section.description}</p>
+              <p className="text-gray-400 text-sm">{section.description}</p>
+              <div className="absolute bottom-0 left-0 right-0 p-2 bg-gray-700 text-center text-xs rounded-b-lg opacity-0 hover:opacity-100 transition-opacity duration-300">
+                {section.description}
+              </div>
             </div>
           ))}
         </div>

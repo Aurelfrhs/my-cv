@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navbar } from "flowbite-react";
 import { motion } from "framer-motion";
 
@@ -13,11 +13,38 @@ const linkVariants = {
 };
 
 export const Header = () => {
-  const [activeLink, setActiveLink] = useState("Home"); // Track the active link
+  const [activeLink, setActiveLink] = useState("Home");
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   const handleLinkClick = (link) => {
-    setActiveLink(link); // Update the active link
+    setActiveLink(link);
+    const hrefMap = {
+      Home: "#profile",
+      About: "#about",
+      Skills: "#skill",
+      Projects: "#project",
+      "Contact Me": "#contact",
+    };
+
+    const targetId = hrefMap[link];
+    const targetElement = document.querySelector(targetId);
+
+    if (targetElement) {
+      setTimeout(() => {
+        targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 300); // Delay of 300ms before scrolling
+    }
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <motion.div
@@ -25,45 +52,49 @@ export const Header = () => {
       initial="hidden"
       animate="visible"
       transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 w-full z-50"
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrollPosition > 100 ? "bg-white shadow-lg" : "bg-transparent"
+      }`}
     >
-      <Navbar fluid rounded className="bg-gray-100">
-        <Navbar.Brand href="https://flowbite-react.com">
+      <Navbar fluid rounded className="max-w-6xl mx-auto px-4">
+        <Navbar.Brand href="#">
           <span className="text-3xl font-bold text-gray-800">CV</span>
         </Navbar.Brand>
         <div className="flex md:order-2">
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
-          {["Home", "About", "Skills", "Projects", "Contact Me"].map((link, index) => {
-            const hrefMap = {
-              Home: "#profile",
-              About: "#about",
-              Skills: "#skill",
-              Projects: "#project",
-              "Contact Me": "#contact",
-            };
-            return (
-              <motion.div
-                key={index}
-                variants={linkVariants}
-                initial="hidden"
-                animate="visible"
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Navbar.Link
-                  href={hrefMap[link]}
-                  active={activeLink === link} // Check if the link is active
-                  onClick={() => handleLinkClick(link)} // Set active link on click
-                  className={`text-gray-700 hover:text-blue-600 transition duration-300 text-lg ${
-                    activeLink === link ? "text-blue-800 font-semibold" : ""
-                  }`}
-                >
-                  {link}
-                </Navbar.Link>
-              </motion.div>
-            );
-          })}
+          <div className="flex flex-col md:flex-row md:space-x-6">
+            {["Home", "About", "Skills", "Projects", "Contact Me"].map(
+              (link, index) => {
+                return (
+                  <motion.div
+                    key={index}
+                    variants={linkVariants}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <Navbar.Link
+                      href="#" // Prevent default link behavior
+                      active={activeLink === link}
+                      onClick={(e) => {
+                        e.preventDefault(); // Prevent default anchor behavior
+                        handleLinkClick(link);
+                      }}
+                      className={`text-gray-700 hover:text-blue-600 transition duration-300 text-lg py-2 px-4 rounded-md ${
+                        activeLink === link
+                          ? "bg-blue-100 text-blue-800 font-semibold shadow-md"
+                          : ""
+                      }`}
+                    >
+                      {link}
+                    </Navbar.Link >
+                  </motion.div>
+                );
+              }
+            )}
+          </div>
         </Navbar.Collapse>
       </Navbar>
     </motion.div>
