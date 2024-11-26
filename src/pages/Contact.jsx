@@ -25,7 +25,7 @@ export const Contact = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Mencegah reload halaman
+    e.preventDefault(); // Prevent page reload
     
     // Simulate email validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -57,15 +57,15 @@ export const Contact = () => {
   }, []);
 
   return (
-    <section className="flex flex-col p-16 pt-20 bg-gray-50 dark:bg-gray-900" id="contact">
-      <h1 className='font-extrabold text-5xl mb-8 text-center phone:text-4xl laptop:text-5xl' 
+    <section className="flex flex-col p-8 pt-20 bg-gray-50 dark:bg-gray-900" id="contact">
+      <h1 className='font-extrabold text-5xl mb-8 text-center phone:text-4xl tablet:text-5xl' 
           data-aos="fade-up" 
           data-aos-duration="1000">
         Get In Touch
       </h1>
-      <div className="flex justify-between items-center gap-10 phone:flex-col tablet:flex-row">
-        <div data-aos="fade-right" data-aos-duration="1000">
-          <h3 className="text-2xl phone:text-xl laptop:text-2xl text-gray-600 dark:text-gray-400">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-10">
+        <div data-aos="fade-right" data-aos-duration="1000" className="flex-1">
+          <h3 className="text-2xl phone:text-xl tablet:text-2xl text-gray-600 dark:text-gray-400">
             Want to learn more? Feel free to contact us using the information below!
           </h3>
           <h4 className="font-semibold mb-4 phone:text-lg tablet:text-xl text-gray-600 dark:text-gray-400">
@@ -92,11 +92,11 @@ export const Contact = () => {
              data-aos="zoom-in" 
              data-aos-duration="1000" 
              data-aos-delay="300">
-            <Linkedin size={ 36} className="text-gray-600 dark:text-gray-400" />
+            <Linkedin size={36} className="text-gray-600 dark:text-gray-400" />
           </a>
         </div>
       </div>
-      <form onSubmit={handleSubmit} className="mt-10 p-6 bg-white rounded-lg shadow-md dark:bg-gray-800" data-aos="fade-up" data-aos-duration="1000">
+      <form onSubmit={handleSubmit} className="mt-10 p-6 bg-white rounded-lg shadow-md dark:bg-gray -800" data-aos="fade-up" data-aos-duration="1000">
         <h2 className="text-2xl mb-4 text-gray-800 dark:text-gray-200">Send Us a Message</h2>
         <div className="flex flex-col mb-4">
           <label className="mb-2 text-gray-600 dark:text-gray-400" htmlFor="name">Name</label>
