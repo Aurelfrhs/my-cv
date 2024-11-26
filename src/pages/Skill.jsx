@@ -1,6 +1,7 @@
+// Start of Skill Component Code
 import React, { useEffect } from "react";
-import AOS from "aos"; // Import AOS
-import "aos/dist/aos.css"; // Import AOS CSS
+import AOS from "aos";
+import "aos/dist/aos.css"; 
 import {
   FaHtml5,
   FaCss3Alt,
@@ -31,14 +32,12 @@ const sections = [
   {
     title: "Bootstrap",
     icon: <FaBootstrap />,
-    description:
-      "A popular front-end framework for building responsive and mobile-first projects",
+    description: "A popular front-end framework for building responsive and mobile-first projects",
   },
   {
     title: "React",
     icon: <FaReact />,
-    description:
-      "A utility-first CSS framework for building custom user interfaces",
+    description: "A utility-first CSS framework for building custom user interfaces",
   },
   {
     title: "PHP",
@@ -53,8 +52,7 @@ const sections = [
   {
     title: "Laravel",
     icon: <FaLaravel />,
-    description:
-      "A PHP framework for building robust and scalable web applications",
+    description: "A PHP framework for building robust and scalable web applications",
   },
   {
     title: "Git",
@@ -74,32 +72,31 @@ const sections = [
   {
     title: "Python",
     icon: <FaPython />,
-    description:
-      "A high-level programming language for general-purpose programming",
+    description: "A high-level programming language for general-purpose programming",
   },
 ];
 
 export const Skill = () => {
   useEffect(() => {
-    AOS.init(); // Initialize AOS
+    AOS.init();
   }, []);
 
   return (
-    <div className="bg-gray-100 min-h-screen py-10">
+    <div className="bg-gray-100 min-h-screen py-10" id="skill">
       <div className="container mx-auto p-5">
         <div
           className="text-black items-center text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 text-center"
           data-aos="fade-down"
           data-aos-easing="linear"
-          data-aos-duration="500"
+          data-aos-duration="1000"
         >
           Skills
         </div>
         <div
-        data-aos="fade-right"
-        data-aos-easing="ease-in-sine"
-        data-aos-offset="300"
-        className="text-black text-lg leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto mb-8 text-center"
+          data-aos="fade-down"
+          data-aos-easing="linear"
+          data-aos-offset="700"
+          className="text-black text-lg leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto mb-8 text-center"
         >
           I possess a diverse skill set in various technologies that empower
           effective and efficient web development. From design to database
@@ -108,9 +105,9 @@ export const Skill = () => {
         </div>
 
         <div className="flex justify-center mt-6 mb-8"
-        data-aos="fade-down"
-        data-aos-easing="linear"
-        data-aos-duration="500"
+          data-aos="fade-down"
+          data-aos-easing="linear"
+          data-aos-duration="1200"
         >
           <div className="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
         </div>
@@ -133,7 +130,7 @@ export const Skill = () => {
                 <div className="text-4xl mr-4 text-blue-600">
                   {section.icon}
                 </div>
-                <h2 className="text-xl sm:text-2xl font-semibold">{section.title}</h2>
+                <h2 className="text-xl sm :text-2xl font-semibold">{section.title}</h2>
               </div>
               <p className="text-sm text-gray-600">{section.description}</p>
             </div>
@@ -143,3 +140,5 @@ export const Skill = () => {
     </div>
   );
 };
+
+export default Skill;

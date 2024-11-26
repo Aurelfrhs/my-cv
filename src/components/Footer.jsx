@@ -30,7 +30,7 @@ export const Footer = () => {
         <div className="w-full py-10">
           <div className="grid w-full justify-between gap-8 sm:flex sm:justify-between md:grid-cols-1">
             <div className="flex items-center mb-4 sm:mb-0">
-              <span className="text-2xl font-bold text-blue-500">Flowbite</span>
+              <span className="text-2xl font-bold text-blue-500">Portofolio</span>
             </div>
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
               {["About", "Follow Us", "Legal"].map((title, index) => (
@@ -98,7 +98,7 @@ export const Footer = () => {
           </div>
           <FlowbiteFooter.Divider className="border-gray-700" />
           <div className="w-full flex flex-col sm:flex-row sm:items-center sm:justify-between mt-4">
-            <FlowbiteFooter.Copyright href="#" by="Flowbite™" year={2022} />
+            <FlowbiteFooter.Copyright href="#" by="Portofolio" year={2024} />
             <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
               {[
                 {

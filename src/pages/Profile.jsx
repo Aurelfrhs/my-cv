@@ -12,7 +12,7 @@ export const Profile = () => {
   }, []);
 
   return (
-    <div className="pt-24">
+    <div className="pt-24" id="profile">
       <Card className="max-w-full m-5 p-10 sm:m-10 sm:p-20 shadow-lg rounded-lg border-3 bg-white dark:bg-gray-800 transition-transform transform hover:scale-105"
       data-aos="fade-down"
       data-aos-easing="linear"
