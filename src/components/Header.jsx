@@ -58,7 +58,7 @@ export const Header = () => {
     >
       <Navbar fluid rounded className="max-w-6xl mx-auto px-4">
         <Navbar.Brand href="#">
-          <span className="text-3xl font-bold text-gray-800">CV</span>
+          <span className="text-3xl font-bold text-gray-800">Portofolio</span>
         </Navbar.Brand>
         <div className="flex md:order-2">
           <Navbar.Toggle />
