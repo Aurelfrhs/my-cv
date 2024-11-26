@@ -22,7 +22,7 @@ export const Header = () => {
       <Navbar
         fluid
         rounded
-        className="bg-gray-100 shadow-lg fixed top-0 left-0 w-full z-50 py-4"
+        className="bg-gray-100 fixed top-0 left-0 w-full z-50 py-4"
       >
         <Navbar.Brand href="https://flowbite-react.com">
           <span className="text-3xl font-bold text-gray-800">CV</span>
@@ -31,7 +31,7 @@ export const Header = () => {
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
-          {["Home", "Skills", "Award", "My Contact"].map((link, index) => (
+          {["Home", "Skills", "Projects", "My Contact"].map((link, index) => (
             <motion.div
               key={index}
               variants={linkVariants}

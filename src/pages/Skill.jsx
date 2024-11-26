@@ -1,5 +1,6 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect } from "react";
+import AOS from "aos"; // Import AOS
+import "aos/dist/aos.css"; // Import AOS CSS
 import {
   FaHtml5,
   FaCss3Alt,
@@ -78,60 +79,55 @@ const sections = [
   },
 ];
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const gridItemVariants = {
-  hidden: { scale: 0.8, opacity: 0 },
-  visible: { scale: 1, opacity: 1 },
-  exit: { scale: 0.8, opacity: 0, transition: { duration: 0.2 } },
-};
-
 export const Skill = () => {
+  useEffect(() => {
+    AOS.init(); // Initialize AOS
+  }, []);
+
   return (
     <div className="bg-gray-100 min-h-screen py-10">
       <div className="container mx-auto p-5">
-        <motion.h1
+        <div
           className="text-black items-center text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 text-center"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          data-aos="fade-down"
+          data-aos-easing="linear"
+          data-aos-duration="500"
         >
           Skills
-        </motion.h1>
-        <motion.p
-          className="text-black text-lg leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto mb-8 text-center"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+        </div>
+        <div
+        data-aos="fade-right"
+        data-aos-easing="ease-in-sine"
+        data-aos-offset="300"
+        className="text-black text-lg leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto mb-8 text-center"
         >
           I possess a diverse skill set in various technologies that empower
           effective and efficient web development. From design to database
           management and dynamic web application development, I am equipped to
           tackle a wide range of challenges.
-        </motion.p>
-        
-        {/* Adding space below the paragraph */}
-        <div className="flex justify-center mt-6 mb-8">
+        </div>
+
+        <div className="flex justify-center mt-6 mb-8"
+        data-aos="fade-down"
+        data-aos-easing="linear"
+        data-aos-duration="500"
+        >
           <div className="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
         </div>
 
-        <motion.div
+        <div
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
           initial="hidden"
           animate="visible"
           exit="exit"
         >
           {sections.map((section, index) => (
-            <motion.div
+            <div
               key={index}
               className="bg-white border border-gray-300 p-6 rounded-lg shadow-lg text-gray-800 transition -transform transform hover:scale-105 hover:shadow-2xl hover:bg-blue-50"
-              variants={gridItemVariants}
-              custom={index * 0.1}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-              whileHover={{ scale: 1.05, rotate: 2 }}
+              data-aos="fade-left"
+              data-aos-easing="ease-in-sine"
+              data-aos-offset="300"
             >
               <div className="flex items-center mb-4">
                 <div className="text-4xl mr-4 text-blue-600">
@@ -140,9 +136,9 @@ export const Skill = () => {
                 <h2 className="text-xl sm:text-2xl font-semibold">{section.title}</h2>
               </div>
               <p className="text-sm text-gray-600">{section.description}</p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </div>
   );
