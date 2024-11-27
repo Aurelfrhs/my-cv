@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import { Card } from "flowbite-react";
+import { Card, Typography, Box, IconButton } from "@mui/material";
 import { ReactTyped } from "react-typed";
 import { BsFacebook, BsGithub, BsLinkedin, BsTwitter, BsInstagram } from "react-icons/bs";
 import Image from '../assets/Image.png'; 
 import AOS from "aos";
 import "aos/dist/aos.css"; 
+import { motion } from "framer-motion";
 
 export const Profile = () => {
   useEffect(() => {
@@ -12,20 +13,29 @@ export const Profile = () => {
   }, []);
 
   return (
-    <div className="pt-10 px-4 sm:px-10" id="profile">
+    <Box id="profile" sx={{ pt: 10, px: 2, sm: { px: 4 }, md: { px: 10 } }}>
       <Card 
-        className="max-w-full mx-auto p-5 sm:p-10 md:p-16 lg:p-20 shadow-2xl rounded-xl border-2 border-gray-200 bg-white dark:bg-gray-800 transition-transform transform hover:scale-105"
+        sx={{ 
+          maxWidth: "100%", 
+          mx: "auto", 
+          p: { xs: 3, sm: 5, md: 10 }, 
+          boxShadow: 24, 
+          border: 2, 
+          borderColor: "gray.200", 
+          bgcolor: "white", 
+          '&:hover': { transform: 'scale(1.02)' },
+          transition: 'transform 0.3s ease-in-out'
+        }}
         data-aos="fade-up" 
         data-aos-easing="linear"
         data-aos-duration="500"
       >
-        {/* Profil Section */}
-        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between">
-          <div className="text-center lg:text-left mb-8 lg:mb-0">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+        <Box display="flex" flexDirection={{ xs: "column", md: "row" }} alignItems="center" justifyContent="space-between">
+          <Box textAlign={{ xs: "center", md: "left" }} mb={{ xs: 5, md: 0 }}>
+            <Typography variant="h5" sx={{ fontWeight: 'bold', color: "text.primary" }}>
               Hello, I am
-            </h2>
-            <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+            </Typography>
+            <Typography variant="h3" sx={{ fontWeight: 'bold' }}>
               <ReactTyped
                 strings={[
                   "Aurel Fristian Ramdhani Hatorangan Simanjuntak",
@@ -36,57 +46,62 @@ export const Profile = () => {
                 loop
                 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 dark:text-white"
               />
-            </h1>
-            <span className="block text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-400 mt-3">
+            </Typography>
+            <Typography variant="h6" sx={{ color: "text.secondary", mt: 2 }}>
               Software Engineer
-            </span>
-          </div>
+            </Typography>
+          </Box>
 
-          <div className="flex-shrink-0" data-aos="fade-up" data-aos-delay="200">
+          <Box flexShrink={0} data-aos="fade-up" data-aos-delay="200">
             <img
               alt="Aurel Fristian Ramdhani Hatorangan Simanjuntak"
               src={Image}
-              className="border-4 border-gray-300 shadow-2xl transition-transform transform hover:scale-110 rounded-full w-32 sm:w-40 md:w-48 lg:w-56"
+              style={{ 
+                border: '4px solid #ccc', 
+                boxShadow: '0 4px 20px rgba(0,0,0,0.1)', 
+                transition: 'transform 0.3s' 
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
+              onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+              width="200"
             />
-          </div>
-        </div>
+          </Box>
+        </Box>
 
         {/* Social Media Section */}
-        <div className="flex flex-wrap justify-center lg:justify-start items-center mt-10 gap-6">
-          {[{
-              icon: <BsFacebook />,
-              color: "hover:text-blue-600",
-              label: "Facebook"
-            }, {
-              icon: <BsGithub />,
-              color: "hover:text-gray-400",
-              label: "GitHub"
-            }, {
-              icon: <BsLinkedin />,
-              color: "hover:text-blue-500",
-              label: "LinkedIn"
-            }, {
-              icon: <BsTwitter />,
-              color: "hover:text-blue-400",
-              label: "Twitter"
-            }, {
-              icon: <BsInstagram />,
-              color: "hover:text-pink-500",
-              label: "Instagram"
-            }].map((social, index) => (
-            <div
+        <Box display="flex" flexWrap="wrap" justifyContent={{ xs: "center", md: "flex-start" }} alignItems="center" mt={5} gap={4}>
+          {[
+            { icon: <BsFacebook />, color: "primary.main", label: "Facebook" },
+            { icon: <BsGithub />, color: "grey.400", label: "GitHub" },
+            { icon: <BsLinkedin />, color: "info.main", label: "LinkedIn" },
+            { icon: <BsTwitter />, color: "info.main", label: "Twitter" },
+            { icon: <BsInstagram />, color: "error.main", label: "Instagram" }
+          ].map((social, index) => (
+            <motion.div
               key={index}
               aria-label={social.label}
-              className={`transition duration-300 transform hover:scale-125 ${social.color}`} 
+              initial={{ scale: 1 }}
+              whileHover={{ 
+                scale: 1.2,
+                transition: { type: "spring", stiffness: 300, damping: 10 }
+              }}
               data-aos="fade-up" 
               data-aos-delay={`${index * 100}`}
             >
-              {React.cloneElement(social.icon, { className: "text-3xl sm:text-4xl hover:animate-bounce" })}
-            </div>
+              <IconButton
+                sx={{
+                  color: social.color,
+                  '&:hover': { transform: 'scale(1.1)' },
+                  transition: 'transform 0.2s'
+                }} 
+              >
+                {React.cloneElement(social.icon, { className: "text-3xl sm:text-4xl" })}
+              </IconButton>
+            </motion.div>
           ))}
-        </div>
+        </Box>
       </Card>
-    </div>
+    </Box>
   );
 };
 

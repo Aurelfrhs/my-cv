@@ -15,6 +15,7 @@ import {
   FaProjectDiagram,
   FaPython,
 } from "react-icons/fa";
+import { Box, Card, Typography } from "@mui/material";
 
 const sections = [
   {
@@ -38,8 +39,7 @@ const sections = [
   {
     title: "Bootstrap",
     icon: <FaBootstrap />,
-    description:
-      "A popular front-end framework for building responsive and mobile-first projects",
+    description: "A popular front-end framework for building responsive and mobile-first projects",
     color: "#563D7C",
   },
   {
@@ -98,17 +98,21 @@ export const Skill = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100 min-h-screen p-6 sm:p-10" id="skill">
-      <div className="max-w-screen-xl mx-auto px-4">
-        <h1
-          className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-6"
+    <Box className="bg-gray-100 min-h-screen p-6 sm:p-10" id="skill">
+      <Box className="max-w-screen-xl mx-auto px-4">
+        <Typography
+          variant="h4"
+          component="h1"
+          align="center"
+          sx={{ fontWeight: 'bold', color: "black", mb: 2 }}
           data-aos="fade-down"
           data-aos-duration="1000"
         >
           Skills
-        </h1>
-        <h2
-          className="text-center text-gray-600 mb-10 text-sm sm:text-base lg:text-lg"
+        </Typography>
+        <Typography
+          align="center"
+          sx={{ color: "black", mb: 4 }}
           data-aos="fade-down"
           data-aos-duration="1200"
         >
@@ -116,44 +120,62 @@ export const Skill = () => {
           effective and efficient web development. From design to database
           management and dynamic web application development, I am equipped to
           tackle a wide range of challenges.
-        </h2>
+        </Typography>
 
-        <div
-          className="flex justify-center mb-8"
+        <Box
+          display="flex"
+          justifyContent="center"
+          mb={4}
           data-aos="fade-down"
           data-aos-duration="1200"
         >
-          <div className="w-16 sm:w-24 h-1 bg-indigo-600 rounded" />
-        </div>
+          <Box className="w-16 sm:w-24 h-1 bg-indigo-600 rounded" />
+        </Box>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <Box
+          display="grid"
+          gridTemplateColumns={{ xs: "repeat(1, 1fr)", sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)", lg: "repeat(4, 1fr)" }}
+          gap={6}
+        >
           {sections.map((section, index) => (
-            <div
+            <Card
               key={index}
               data-aos="fade-up"
               data-aos-easing="linear"
               data-aos-duration="1000"
-              className="bg-gray-800 text-white rounded-lg p-4 sm:p-6 shadow-lg flex flex-col items-center text-center transition-transform transform hover:scale-105 relative"
+              sx={{
+                bgcolor: "gray.800",
+                color: "black",
+                borderRadius: 2,
+                p: 2,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                textAlign: "center",
+                position: "relative",
+                transition: "transform 0.3s",
+                '&:hover': { transform: 'scale(1.05)' },
+              }}
             >
-              <div className="flex items-center justify-center mb-4">
-                <div
-                  className="text-3xl sm:text-4xl mr-2"
-                  style={{ color: section.color }}
+              <Box display="flex" alignItems="center" justifyContent="center" mb={2}>
+                <Box
+                  sx={{ fontSize: { xs: '2rem', sm: '2.5rem' }, color: section.color }}
                   aria-label={section.title}
                 >
                   {section.icon}
-                </div>
-                <h3 className="text-lg sm:text-xl">{section.title}</h3>
-              </div>
-              <p className="text-gray-400 text-xs sm:text-sm">{section.description}</p>
-              <div className="absolute bottom-0 left-0 right-0 p-2 bg-gray-700 text-center text-xs sm:text-sm rounded-b-lg opacity-0 hover:opacity-100 transition-opacity duration-300">
+                </Box>
+                <Typography variant="h6" sx={{ ml: 1, color: "black" }}>
+                  {section.title}
+                </Typography>
+              </Box>
+              <Typography variant="body2" sx={{ color: "gray.400", fontSize: { xs: '0.75rem', sm: '0.875rem' }, mb: 1 }}>
                 {section.description}
-              </div>
-            </div>
+              </Typography>
+            </Card>
           ))}
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

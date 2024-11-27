@@ -9,6 +9,7 @@ import {
   BsEnvelope,
   BsTelephone,
 } from "react-icons/bs";
+import { Box, Typography, Button, TextField } from "@mui/material";
 
 const footerVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -29,15 +30,17 @@ export const Footer = () => {
       transition={{ duration: 0.5 }}
     >
       <FlowbiteFooter container className="bg-gray-900 text-white">
-        <div className="w-full py-6"> {/* Reduced padding */}
-          <div className="grid w-full gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            <div className="flex flex-col mb-4 sm:mb-0">
-              <span className="text-xl font-bold text-blue-500">Portofolio</span> {/* Reduced font size */}
-              <p className="text-gray-400 mt-1">
+        <Box className="w-full py-6">
+          <Box className="grid w-full gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <Box className="flex flex-col mb-4 sm:mb-0">
+              <Typography variant="h6" className="text-blue-500 font-bold">
+                Portofolio
+              </Typography>
+              <Typography className="text-gray-400 mt-1">
                 Your one-stop solution for web development and design.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 gap-4">
+              </Typography>
+            </Box>
+            <Box className="grid grid-cols-1 gap-4">
               {["About", "Follow Us", "Legal"].map((title, index) => (
                 <motion.div
                   key={index}
@@ -69,45 +72,44 @@ export const Footer = () => {
                   </FlowbiteFooter.LinkGroup>
                 </motion.div>
               ))}
-            </div>
-
-            {/* Contact Information Section */}
-            <div className="flex flex-col mb-4 sm:mb-0">
+            </Box>
+            <Box className="flex flex-col mb-4 sm:mb-0">
               <FlowbiteFooter.Title title="Contact Us" />
-              <div className="flex items-center mt-1">
+              <Box className="flex items-center mt-1">
                 <BsEnvelope className="text-gray-400 mr-1" />
-                <span className="text-gray-400 text-sm">info@portofolio.com</span> {/* Reduced font size */}
-              </div>
-              <div className="flex items-center mt-1">
+                <Typography className="text-gray-400 text-sm">info@portofolio.com</Typography>
+              </Box>
+              <Box className="flex items-center mt-1">
                 <BsTelephone className="text-gray-400 mr-1" />
-                <span className="text-gray-400 text-sm">+1 234 567 890</span> {/* Reduced font size */}
-              </div>
-            </div>
-
-            {/* Newsletter Subscription Section */}
-            <div className="flex flex-col mb-4 sm:mb-0">
+                <Typography className="text-gray-400 text-sm">+1 234 567 890</Typography>
+              </Box>
+            </Box>
+            <Box className="flex flex-col mb-4 sm:mb-0">
               <FlowbiteFooter.Title title="Subscribe" />
-              <p className="text-gray-400 mt-1 text-sm">Stay updated with our latest news.</p> {/* Reduced font size */}
+              <Typography className="text-gray-400 mt-1 text-sm">Stay updated with our latest news.</Typography>
               <form className="flex mt-1">
-                <input
+                <TextField
                   type="email"
                   placeholder="Your email"
-                  className="p-1 rounded-l-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  variant="outlined"
+                  size="small"
+                  className="rounded-l-md border border-gray-600 bg-white text-black" 
                   required
                 />
-                <button
+                <Button
                   type="submit"
-                  className="p-1 bg-blue-500 text-white rounded-r-md hover:bg-blue-600 transition duration-300"
+                  variant="contained"
+                  className="rounded-r-md bg-white text-black hover:bg -blue-600 transition duration-300" 
                 >
                   Subscribe
-                </button>
+                </Button>
               </form>
-            </div>
-          </div>
+            </Box>
+          </Box>
           <FlowbiteFooter.Divider className="border-gray-700" />
-          <div className="w-full flex flex-col sm:flex-row sm:items-center sm:justify-between mt-4">
+          <Box className="w-full flex flex-col sm:flex-row sm:items-center sm:justify-between mt-4">
             <FlowbiteFooter.Copyright href="#" by="Portofolio" year={2024} />
-            <div className="mt-4 flex space-x-4 sm:mt-0 sm:justify-center">
+            <Box className="mt-4 flex space-x-4 sm:mt-0 sm:justify-center">
               {[
                 {
                   icon: <BsFacebook />,
@@ -150,9 +152,9 @@ export const Footer = () => {
                   </motion.span>
                 </a>
               ))}
-            </div>
-          </div>
-        </div>
+            </Box>
+          </Box>
+        </Box>
       </FlowbiteFooter>
     </motion.div>
   );

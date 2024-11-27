@@ -7,14 +7,10 @@ const headerVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-const linkVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0 },
-};
-
 export const Header = () => {
   const [activeLink, setActiveLink] = useState("Home");
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
@@ -34,6 +30,7 @@ export const Header = () => {
         targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 300);
     }
+    setIsOpen(false);
   };
 
   useEffect(() => {
@@ -56,26 +53,18 @@ export const Header = () => {
         scrollPosition > 100 ? "bg-white shadow-lg" : "bg-transparent"
       }`}
     >
-      <Navbar fluid rounded className="max-w-6xl mx-auto px-4 sm:px-10">
+      <Navbar fluid rounded className="max-w-7xl w-full px-4 sm:px-10 py-4">
         <Navbar.Brand href="#">
           <span className="text-2xl sm:text-3xl font-bold text-gray-800">
             Portfolio
           </span>
         </Navbar.Brand>
-        {/* Hamburger Menu Button */}
-        <Navbar.Toggle />
-        {/* Navbar Items */}
-        <Navbar.Collapse>
+        <Navbar.Toggle onClick={() => setIsOpen(!isOpen)} />
+        <Navbar.Collapse className={`${isOpen ? "block" : "hidden"} md:block`}>
           <div className="flex flex-col md:flex-row md:space-x-6">
             {["Home", "About", "Skills", "Projects", "Contact Me"].map(
               (link, index) => (
-                <motion.div
-                  key={index}
-                  variants={linkVariants}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
+                <div key={index}>
                   <Navbar.Link
                     href="#"
                     active={activeLink === link}
@@ -91,7 +80,7 @@ export const Header = () => {
                   >
                     {link}
                   </Navbar.Link>
-                </motion.div>
+                </div>
               )
             )}
           </div>

@@ -1,9 +1,11 @@
+import React, { useEffect } from "react";
 import Aos from "aos";
-import { useEffect } from "react";
+import "aos/dist/aos.css";
+import { Box, Typography, Card, CardMedia, Chip, Grid } from "@mui/material";
 
 export const Project = () => {
   useEffect(() => {
-    Aos.init();
+    Aos.init({ duration: 1000 });
   }, []);
 
   const projects = [
@@ -14,32 +16,72 @@ export const Project = () => {
   ];
 
   return (
-    <section className="flex flex-col p-10 pt-15 min-h-screen w-full" id="project">
-      <h2 className="font-extrabold text-4xl mb-10 mt-20 text-center text-gray-800" data-aos="fade-up" data-aos-offset="300" data-aos-easing="ease-in-sine">
+    <Box className="min-h-screen w-full p={5}" id="project" sx={{ backgroundColor: '#f5f5f5', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Typography
+        variant="h4"
+        component="h2"
+        align="center"
+        sx={{ fontWeight: 'bold', mb: 5, mt: 10, color: "text.primary" }}
+        data-aos="fade-up"
+      >
         My Projects
-      </h2>
-      <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      </Typography>
+      <Grid container spacing={4} justifyContent="center">
         {projects.map((project, index) => (
-          <div
-            key={index}
-            className="flex flex-col justify-center items-center bg-white w-full h-auto p-5 rounded-lg shadow-md transition-transform transform hover:scale-105"
-            data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
-            data-aos-offset="300"
-            data-aos-easing="ease-in-sine"
-          >
-            <img src={project.imageUrl} alt={project.title} className="w-full h-48 object-cover rounded-md mb-3" />
-            <h3 className="text-gray-800 text-xl font-bold text-center">{project.title}</h3>
-            <div className="flex gap-3 mt-2 flex-wrap justify-center">
-              {project.tags.map((tag, tagIndex) => (
-                <span key={tagIndex} className="px-3 py-1 bg-blue-500 text-white rounded-md font-semibold">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
+          <Grid item xs={12} sm={6} md={4} key={index}>
+            <Box
+              sx={{ 
+                display: 'flex', 
+                justifyContent: 'center', 
+                mb: 4,
+              }}
+              data-aos={index % 2 === 0 ? "fade-right" : "fade-left"} 
+            >
+              <Card
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  transition: 'transform 0.3s, box-shadow 0.3s',
+                  '&:hover': { 
+                    transform: 'scale(1.05)', 
+                    boxShadow: 6 
+                  },
+                  width: '100%',
+                  maxWidth: 400,
+                  boxShadow: 3, 
+                  bgcolor: 'white',
+                  borderRadius: 2, 
+                  overflow: 'hidden', 
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image={project.imageUrl}
+                  alt={project.title}
+                  sx={{ height: 200, width: '100%', objectFit: 'cover' }}
+                />
+                <Box sx={{ p: 2, textAlign: 'center' }}>
+                  <Typography variant="h6" sx={{ fontWeight: 'bold', color: "text.primary" }}>
+                    {project.title}
+                  </Typography>
+                  <Box sx={{ mt: 1 }}>
+                    {project.tags.map((tag, tagIndex) => (
+                      <Chip
+                        key={tagIndex}
+                        label={tag}
+                        sx={{ margin: '2px', bgcolor: 'blue.500', color: 'white', fontWeight: 'bold' }}
+                      />
+                    ))}
+                  </Box>
+                </Box>
+              </Card>
+            </Box>
+          </Grid>
         ))}
-      </div>
-    </section>
+      </Grid>
+    </Box>
   );
 };
 

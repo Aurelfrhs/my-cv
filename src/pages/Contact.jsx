@@ -3,7 +3,7 @@ import { Instagram } from "iconsax-react";
 import { Github, Linkedin } from "lucide-react";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { Alert, Snackbar } from "@mui/material";
+import { Alert, Snackbar, Box, Typography, TextField, Button } from "@mui/material";
 import { motion } from "framer-motion";
 
 const socialLinks = [
@@ -37,8 +37,6 @@ export const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Email validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(formData.email)) {
       setAlertMessage("Email anda salah");
@@ -70,15 +68,30 @@ export const Contact = () => {
       transition={{ duration: 0.5 }}
       className="flex flex-col p-8 pt-20 bg-gray-100"
     >
-      <h1 className="font-extrabold text-5xl mb-8 text-center text-gray-800" data-aos="fade-up" data-aos-duration="300">
+      <Typography
+        variant="h4"
+        component="h1"
+        align="center"
+        sx={{ fontWeight: 'bold', mb: 8, color: "text.primary" }}
+        data-aos="fade-up"
+        data-aos-duration="300"
+      >
         Contact Me
-      </h1>
-      <div className="flex flex-col md:flex-row justify-between items-center gap-10">
-        <div data-aos="fade-right" data-aos-duration="1000" className="flex-1 bg-white text-gray-800 rounded-lg p-6 shadow-lg">
-          <h3 className="text-2xl mb-4">Want to learn more? Feel free to contact us using the information below!</h3>
-          <h4 className="font-semibold mb-4">aurelfristian10@gmail.com</h4>
-        </div>
-        <div className="flex flex-row gap-6" data-aos="fade-left" data-aos-duration="1000">
+      </Typography>
+      <Box className="flex flex-col md:flex-row justify-between items-center gap-10">
+        <Box
+          data-aos="fade-right"
+          data-aos-duration="1000"
+          sx={{ flex: 1, bgcolor: 'white', color: 'gray.800', borderRadius: 2, p: 3, boxShadow: 3 }}
+        >
+          <Typography variant="h6" sx={{ mb: 2 }}>
+            Want to learn more? Feel free to contact us using the information below!
+          </Typography>
+          <Typography variant="body1" sx={{ fontWeight: 'bold' }}>
+            aurelfristian10@gmail.com
+          </Typography>
+        </Box>
+        <Box className="flex flex-row gap-6" data-aos="fade-left" data-aos-duration="1000">
           {socialLinks.map(({ href, icon, label }, index) => (
             <a
               key={index}
@@ -94,44 +107,53 @@ export const Contact = () => {
               {icon}
             </a>
           ))}
-        </div>
-      </div>
-      <form onSubmit={handleSubmit} className="mt-10 p-6 bg-white rounded-lg shadow-md" data-aos="fade-up" data-aos-duration="1000">
-        <h2 className="text-2xl mb-4 text-gray-800">Send Us a Message</h2>
+        </Box>
+      </Box>
+      <form onSubmit={handleSubmit} className="mt-10" data-aos="fade-up" data-aos-duration="1000">
+        <Typography variant="h5" sx={{ mb: 4, color: 'gray.800' }}>
+          Send Us a Message
+        </Typography>
         {["name", "email", "message"].map((field, index) => (
-          <div className="flex flex-col mb-4" key={index}>
-            <label className="mb-2 text-gray-600" htmlFor={field}>
+          <Box className="flex flex-col mb-4" key={index}>
+            <Typography variant="body1" sx={{ mb: 1, color: 'gray.600' }}>
               {field.charAt(0).toUpperCase() + field.slice(1)}
-            </label>
+            </Typography>
             {field !== "message" ? (
-              <input
+              <TextField
                 type={field === "email" ? "email" : "text"}
                 id={field}
                 name={field}
                 value={formData[field]}
                 onChange={handleChange}
                 required
-                className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
+                variant="outlined"
+                fullWidth
+                sx={{ borderRadius: 1 }}
               />
             ) : (
-              <textarea
+              <TextField
                 id={field}
                 name={field}
                 value={formData[field]}
                 onChange={handleChange}
                 required
-                rows="4"
-                className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
+                multiline
+                rows={4}
+                variant="outlined"
+                fullWidth
+                sx={{ borderRadius: 1 }}
               />
             )}
-          </div>
+          </Box>
         ))}
-        <button
+        <Button
           type="submit"
-          className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300"
+          variant="contained"
+          color="primary"
+          sx={{ px: 4, py: 2 }}
         >
           Send Message
-        </button>
+        </Button>
       </form>
       <Snackbar
         open={openSnackbar}
