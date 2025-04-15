@@ -92,12 +92,12 @@ export const About = () => {
               Aurel Fristian Ramdhani Hatorangan Simanjuntak
             </span>
             , seorang pelajar SMK dari Bandung, Jawa Barat, yang bercita-cita
-            menjadi back-end developer dan mobile developer profesional. Saya
+            menjadi Front-End developer dan mobile developer profesional. Saya
             sangat mencintai dunia desain dan coding, dan selalu bersemangat
             menciptakan karya yang menarik secara visual. Keinginan saya
             adalah menjadi ahli di bidang{" "}
             <span style={{ fontWeight: 'bold', color: '#3182CE' }}>
-              back-end development, mobile development, dan UI/UX
+              Front-End development, mobile development, dan UI/UX
             </span>
             , sehingga dapat menghubungkan kreativitas desain dengan
             pengalaman pengguna yang optimal di berbagai platform.
