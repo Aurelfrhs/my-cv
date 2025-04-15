@@ -1,36 +1,66 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { Header } from './components/Header';
 import { Profile } from './pages/Profile';
-import { About } from './pages/About'
+import { About } from './pages/About';
 import { Skill } from './pages/Skill';
 import { Project } from './pages/Project';
-import { Contact } from './pages/Contact'
+import { Contact } from './pages/Contact';
 import { Footer } from './components/Footer';
-import { styled } from 'styled-components';
-
-const Spacer = styled.div`
-  margin: 100px 0; /* Atur jarak vertikal */
-`;
+import { motion } from 'framer-motion';
 
 const App = () => {
-  const [count, setCount] = useState(0);
+  // Effect yang dijalankan sekali saat halaman pertama kali dimuat
+  useEffect(() => {
+    // Anda bisa menambahkan efek tambahan lainnya di sini jika perlu
+  }, []);
 
-  return (  
+  return (
     <>
       <Header />
-      <Spacer />
-      <Profile />
-      <Spacer />
-      <About />
-      <Spacer />
-      <Skill />
-      <Spacer />
-      <Project />
-      <Spacer />
-      <Contact /> 
+      {/* Memberikan animasi smooth untuk munculnya komponen dengan Framer Motion */}
+      <motion.div 
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 1 }} 
+        transition={{ duration: 1 }}
+      >
+        <Profile />
+      </motion.div>
+
+      <motion.div 
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 1 }} 
+        transition={{ duration: 1, delay: 0.2 }}
+      >
+        <About />
+      </motion.div>
+
+      <motion.div 
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 1 }} 
+        transition={{ duration: 1, delay: 0.4 }}
+      >
+        <Skill />
+      </motion.div>
+
+      <motion.div 
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 1 }} 
+        transition={{ duration: 1, delay: 0.6 }}
+      >
+        <Project />
+      </motion.div>
+
+      <motion.div 
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 1 }} 
+        transition={{ duration: 1, delay: 0.8 }}
+      >
+        <Contact />
+      </motion.div>
+
       <Footer />
     </>
   );
-}
+};
 
 export default App;

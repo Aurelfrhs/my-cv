@@ -1,11 +1,4 @@
 import { useState, useEffect } from "react";
-import { Navbar } from "flowbite-react";
-import { motion } from "framer-motion";
-
-const headerVariants = {
-  hidden: { opacity: 0, y: -20 },
-  visible: { opacity: 1, y: 0 },
-};
 
 export const Header = () => {
   const [activeLink, setActiveLink] = useState("Home");
@@ -44,49 +37,48 @@ export const Header = () => {
   }, []);
 
   return (
-    <motion.div
-      variants={headerVariants}
-      initial="hidden"
-      animate="visible"
-      transition={{ duration: 0.5 }}
+    <div
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrollPosition > 100 ? "bg-white shadow-lg" : "bg-transparent"
       }`}
     >
-      <Navbar fluid rounded className="max-w-7xl w-full px-4 sm:px-10 py-4">
-        <Navbar.Brand href="#">
-          <span className="text-2xl sm:text-3xl font-bold text-gray-800">
-            Portfolio
-          </span>
-        </Navbar.Brand>
-        <Navbar.Toggle onClick={() => setIsOpen(!isOpen)} />
-        <Navbar.Collapse className={`${isOpen ? "block" : "hidden"} md:block`}>
-          <div className="flex flex-col md:flex-row md:space-x-6">
-            {["Home", "About", "Skills", "Projects", "Contact Me"].map(
-              (link, index) => (
-                <div key={index}>
-                  <Navbar.Link
-                    href="#"
-                    active={activeLink === link}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleLinkClick(link);
-                    }}
-                    className={`text-gray-700 hover:text-blue-600 transition duration-300 text-lg py-2 px-4 rounded-md ${
-                      activeLink === link
-                        ? "bg-blue-100 text-blue-800 font-semibold shadow-md"
-                        : ""
-                    }`}
-                  >
-                    {link}
-                  </Navbar.Link>
-                </div>
-              )
-            )}
-          </div>
-        </Navbar.Collapse>
-      </Navbar>
-    </motion.div>
+      <div className="w-full px-4 sm:px-10 py-4 flex justify-between items-center">
+        <div className="text-3xl sm:text-4xl font-bold text-gray-800">
+          Portfolio
+        </div>
+        <button
+          className="block md:hidden text-gray-800"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <span className="text-2xl">&#9776;</span>
+        </button>
+        <div
+          className={`${
+            isOpen ? "block" : "hidden"
+          } md:flex md:space-x-6 text-lg text-gray-700 font-medium`}
+        >
+          {["Home", "About", "Skills", "Projects", "Contact Me"].map(
+            (link, index) => (
+              <a
+                key={index}
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLinkClick(link);
+                }}
+                className={`py-2 px-4 rounded-md transition-all duration-300 ease-in-out ${
+                  activeLink === link
+                    ? "text-blue-600 font-semibold"
+                    : "hover:text-blue-600 hover:scale-105"
+                }`}
+              >
+                {link}
+              </a>
+            )
+          )}
+        </div>
+      </div>
+    </div>
   );
 };
 

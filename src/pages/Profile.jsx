@@ -2,100 +2,91 @@ import React, { useEffect } from "react";
 import { Card, Typography, Box, IconButton } from "@mui/material";
 import { ReactTyped } from "react-typed";
 import { BsFacebook, BsGithub, BsLinkedin, BsTwitter, BsInstagram } from "react-icons/bs";
-import Image from '../assets/Image.png'; 
+import Image from "../assets/Image.png";
 import AOS from "aos";
-import "aos/dist/aos.css"; 
+import "aos/dist/aos.css";
 import { motion } from "framer-motion";
 
 export const Profile = () => {
   useEffect(() => {
-    AOS.init();
+    AOS.init({ duration: 500, easing: "ease-in-out" });
   }, []);
 
+  const socialIcons = [
+    { icon: <BsFacebook />, color: "#3b5998", label: "Facebook" },
+    { icon: <BsGithub />, color: "#333", label: "GitHub" },
+    { icon: <BsLinkedin />, color: "#0077b5", label: "LinkedIn" },
+    { icon: <BsTwitter />, color: "#1DA1F2", label: "Twitter" },
+    { icon: <BsInstagram />, color: "#E1306C", label: "Instagram" }
+  ];
+
   return (
-    <Box id="profile" sx={{ pt: 10, px: 2, sm: { px: 4 }, md: { px: 10 } }}>
+    <Box id="profile" sx={{ pt: 10, px: { xs: 2, sm: 4, md: 10 }, position: "relative" }}>
       <Card 
         sx={{ 
           maxWidth: "100%", 
           mx: "auto", 
           p: { xs: 3, sm: 5, md: 10 }, 
-          boxShadow: 24, 
-          border: 2, 
-          borderColor: "gray.200", 
-          bgcolor: "white", 
-          '&:hover': { transform: 'scale(1.02)' },
-          transition: 'transform 0.3s ease-in-out'
+          bgcolor: "rgba(255, 255, 255, 0.4)", // Transparan
+          backdropFilter: "blur(10px)", // Efek blur di belakang
+          borderRadius: "16px", // Sudut melengkung
+          transition: "transform 0.3s ease-in-out", // Transisi saat hover
+          '&:hover': { transform: "scale(1.02)" },
+          boxShadow: "none", // Menghapus shadow
         }}
-        data-aos="fade-up" 
-        data-aos-easing="linear"
-        data-aos-duration="500"
+        data-aos="fade-up"
       >
         <Box display="flex" flexDirection={{ xs: "column", md: "row" }} alignItems="center" justifyContent="space-between">
           <Box textAlign={{ xs: "center", md: "left" }} mb={{ xs: 5, md: 0 }}>
-            <Typography variant="h5" sx={{ fontWeight: 'bold', color: "text.primary" }}>
+            <Typography variant="h5" sx={{ fontWeight: "bold", color: "text.primary" }}>
               Hello, I am
             </Typography>
-            <Typography variant="h3" sx={{ fontWeight: 'bold' }}>
+            <Typography variant="h3" sx={{ fontWeight: "bold" }}>
               <ReactTyped
-                strings={[
-                  "Aurel Fristian Ramdhani Hatorangan Simanjuntak",
-                  "Backend Developer",
-                ]}
-                typeSpeed={25}
+                strings={["Aurel Fristian Ramdhani Simanjuntak", "Front End Developer"]}
+                typeSpeed={50}
                 backSpeed={50}
                 loop
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 dark:text-white"
               />
             </Typography>
             <Typography variant="h6" sx={{ color: "text.secondary", mt: 2 }}>
               Software Engineer
             </Typography>
           </Box>
-
           <Box flexShrink={0} data-aos="fade-up" data-aos-delay="200">
-            <img
-              alt="Aurel Fristian Ramdhani Hatorangan Simanjuntak"
+            <motion.img
+              alt="Aurel Fristian"
               src={Image}
+              width="300"
               style={{ 
-                border: '4px solid #ccc', 
-                boxShadow: '0 4px 20px rgba(0,0,0,0.1)', 
-                transition: 'transform 0.3s' 
+                transition: "transform 0.3s", 
+                borderRadius: "50%", // Gambar bulat
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-              onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-              width="200"
+              whileHover={{ scale: 1.1 }}
             />
           </Box>
         </Box>
-
         {/* Social Media Section */}
-        <Box display="flex" flexWrap="wrap" justifyContent={{ xs: "center", md: "flex-start" }} alignItems="center" mt={5} gap={4}>
-          {[
-            { icon: <BsFacebook />, color: "primary.main", label: "Facebook" },
-            { icon: <BsGithub />, color: "grey.400", label: "GitHub" },
-            { icon: <BsLinkedin />, color: "info.main", label: "LinkedIn" },
-            { icon: <BsTwitter />, color: "info.main", label: "Twitter" },
-            { icon: <BsInstagram />, color: "error.main", label: "Instagram" }
-          ].map((social, index) => (
+        <Box display="flex" flexWrap="wrap" justifyContent={{ xs: "center", md: "flex-start" }} alignItems="center" mt={5} gap={2}>
+          {socialIcons.map((social, index) => (
             <motion.div
               key={index}
               aria-label={social.label}
               initial={{ scale: 1 }}
-              whileHover={{ 
-                scale: 1.2,
-                transition: { type: "spring", stiffness: 300, damping: 10 }
-              }}
-              data-aos="fade-up" 
-              data-aos-delay={`${index * 100}`}
+              whileHover={{ scale: 1.2, transition: { type: "spring", stiffness: 300, damping: 10 } }}
             >
               <IconButton
-                sx={{
-                  color: social.color,
-                  '&:hover': { transform: 'scale(1.1)' },
-                  transition: 'transform 0.2s'
-                }} 
+                sx={{ 
+                  color: social.color, 
+                  transition: "transform 0.2s",
+                  backgroundColor: "rgba(255, 255, 255, 0.5)", // Transparan dengan efek blur
+                  backdropFilter: "blur(5px)", // Efek blur pada background
+                  borderRadius: "50%", // Ikon bulat
+                  '&:hover': { backgroundColor: "rgba(255, 255, 255, 0.7)" },
+                  boxShadow: "none", // Menghapus shadow pada ikon
+                }}
               >
-                {React.cloneElement(social.icon, { className: "text-3xl sm:text-4xl" })}
+                {React.cloneElement(social.icon, { size: "1.8em" })}
               </IconButton>
             </motion.div>
           ))}
