@@ -4,7 +4,6 @@ import { Profile } from './pages/Profile';
 import { About } from './pages/About';
 import { Skill } from './pages/Skill';
 import { Project } from './pages/Project';
-import { Contact } from './pages/Contact';
 import { Footer } from './components/Footer';
 import { motion } from 'framer-motion';
 
@@ -49,15 +48,6 @@ const App = () => {
       >
         <Project />
       </motion.div>
-
-      <motion.div 
-        initial={{ opacity: 0 }} 
-        animate={{ opacity: 1 }} 
-        transition={{ duration: 1, delay: 0.8 }}
-      >
-        <Contact />
-      </motion.div>
-
       <Footer />
     </>
   );

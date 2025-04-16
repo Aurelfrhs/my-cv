@@ -21,29 +21,29 @@ export const Profile = () => {
   ];
 
   return (
-    <Box id="profile" sx={{ pt: 10, px: { xs: 2, sm: 4, md: 10 }, position: "relative" }}>
+    <Box id="profile" sx={{ pt: 10, position: "relative" }}>
       <Card 
         sx={{ 
           maxWidth: "100%", 
           mx: "auto", 
           p: { xs: 3, sm: 5, md: 10 }, 
-          bgcolor: "rgba(255, 255, 255, 0.4)", // Transparan
-          backdropFilter: "blur(10px)", // Efek blur di belakang
-          borderRadius: "16px", // Sudut melengkung
-          transition: "transform 0.3s ease-in-out", // Transisi saat hover
+          bgcolor: "rgba(255, 255, 255, 0.4)", 
+          backdropFilter: "blur(10px)", 
+          borderRadius: "16px", 
+          transition: "transform 0.3s ease-in-out", 
           '&:hover': { transform: "scale(1.02)" },
-          boxShadow: "none", // Menghapus shadow
+          boxShadow: "none", 
         }}
         data-aos="fade-up"
       >
         <Box display="flex" flexDirection={{ xs: "column", md: "row" }} alignItems="center" justifyContent="space-between">
           <Box textAlign={{ xs: "center", md: "left" }} mb={{ xs: 5, md: 0 }}>
-            <Typography variant="h5" sx={{ fontWeight: "bold", color: "text.primary" }}>
+            <Typography variant="h6" sx={{ fontWeight: "bold", color: "text.primary" }}>
               Hello, I am
             </Typography>
-            <Typography variant="h3" sx={{ fontWeight: "bold" }}>
+            <Typography variant="h4" sx={{ fontWeight: "bold" }}>
               <ReactTyped
-                strings={["Aurel Fristian Ramdhani Simanjuntak", "Front End Developer"]}
+                strings={["Aurel Fristian Ramdhani Hatorangan Simanjuntak", "Front End Developer"]}
                 typeSpeed={50}
                 backSpeed={50}
                 loop
@@ -55,12 +55,11 @@ export const Profile = () => {
           </Box>
           <Box flexShrink={0} data-aos="fade-up" data-aos-delay="200">
             <motion.img
-              alt="Aurel Fristian"
+              alt="Aurel Fristian Ramdhani Hatorangan Simanjuntak"
               src={Image}
               width="300"
               style={{ 
                 transition: "transform 0.3s", 
-                borderRadius: "50%", // Gambar bulat
               }}
               whileHover={{ scale: 1.1 }}
             />
