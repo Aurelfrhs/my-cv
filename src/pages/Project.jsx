@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { Box, Typography, Card, CardMedia, Chip, Grid } from "@mui/material";
+import projek1 from '../assets/projek-1.png';
 
 export const Project = () => {
   useEffect(() => {
@@ -9,10 +10,9 @@ export const Project = () => {
   }, []);
 
   const projects = [
-    { title: "Title Project 1", tags: ["Tag1", "Tag2", "Tag3"], imageUrl: "https://via.placeholder.com/300" },
+    { title: "Figma To React", tags: ["", "", ""], imageUrl: projek1 },
     { title: "Title Project 2", tags: ["Tag1", "Tag2", "Tag3"], imageUrl: "https://via.placeholder.com/300" },
     { title: "Title Project 3", tags: ["Tag1", "Tag2", "Tag3"], imageUrl: "https://via.placeholder.com/300" },
-    { title: "Title Project 4", tags: ["Tag1", "Tag2", "Tag3"], imageUrl: "https://via.placeholder.com/300" },
   ];
 
   return (
